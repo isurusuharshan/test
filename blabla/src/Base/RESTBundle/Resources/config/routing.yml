@@ -1,0 +1,7 @@
+base_rest_testApi_one:
+    path:     /test_one
+    defaults: { _controller: BaseRESTBundle:Booking:testOne }
+
+base_rest_testApi_tow:
+    path:     /test_two
+    defaults: { _controller: BaseRESTBundle:Booking:testTwo }

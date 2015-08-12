@@ -1,0 +1,4 @@
+services:
+    data_access.pms:
+        class: Base\DataAccessBundle\PMS\Service
+        arguments: [@guzzle.client.api_crm, @security.token_storage, @doctrine, @session]
