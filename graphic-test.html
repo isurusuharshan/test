@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="/test/jquery.min.js"></script>
+    <script src="/test/meter.js"></script>
+</head>
+<body>
+<div>
+
+</div>
+
+<canvas style="width: 50%;height: 50%;border: 1px solid;" id="poly">
+</canvas>
+
+<canvas style="width: 50%;height: 50%;" id="meter">
+
+</canvas>
+<!--<img src="meter.png"/>-->
+
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        // ---------------------------------------------------
+//        var meter = new Meter();
+//        meter.setAngle('meter','meter.png',60);
+
+        //-----------------------------------------------------
+
+        function plotHColor(plot,config){
+            var canvas = plot.find('.jqplot-highlight-canvas');
+            var height = canvas.height();
+            var length = canvas.width();
+
+            canvas.attr('height',height); // adjusting the resolution
+            canvas.attr('width',length);
+
+            var x = canvas.get(0).getContext('2d');
+            config.forEach(function(cell){
+                var st_x = cell[0]*length/100;
+                var width = cell[1]*length/100-cell[0]*length/100;
+                x.fillStyle = 'rgba('+cell[2]+',0.4)';
+                x.fillRect(st_x, 0,width , height);
+            });
+
+        }
+
+        var plot = $('#plot1');
+        plotHColor(plot,[[0,25,'255,0,0'],[25,100,'0,255,0']]);
+    });
+</script>
+
+</html>
